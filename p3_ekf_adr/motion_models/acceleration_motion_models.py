@@ -163,4 +163,3 @@ def acceleration_motion_model_no_control_linearized():
 		return V
 	
 	return state_transition_function_g, jacobian_of_g_wrt_state_G, jacobian_of_g_wrt_control_V
-

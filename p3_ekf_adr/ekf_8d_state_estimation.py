@@ -3,7 +3,8 @@ import rclpy
 import numpy as np
 
 # TODO: Import the correct motion and observation models for the 8D case
-
+from .motion_models.acceleration_motion_models import acceleration_motion_model_linearized_2
+from .observation_models.odometry_imu_observation_models import odometry_imu_observation_model_with_acceleration_motion_model_linearized_2
 from .filters.ekf import ExtendedKalmanFilter
 from .kf_node import KalmanFilterFusionNode as ExtendedKalmanFilterFusionNode
 
@@ -19,8 +20,8 @@ def main(args=None):
 
     # === TODO: Replace the None below with proper motion and observation model functions ===
     ekf = ExtendedKalmanFilter(mu0, Sigma0,
-                               None,  # TODO: motion_model_8d
-                               None,  # TODO: observation_model_8d
+                               acceleration_motion_model_linearized_2,  # TODO: motion_model_8d
+                               odometry_imu_observation_model_with_acceleration_motion_model_linearized_2,  # TODO: observation_model_8d
                                proc_noise_std=proc_noise_std,
                                obs_noise_std=obs_noise_std)
     # ===================================================================

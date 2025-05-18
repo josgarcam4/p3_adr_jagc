@@ -101,4 +101,3 @@ def odometry_imu_observation_model_with_acceleration_motion_model_3D():
 		return np.array([[x], [y], [z], [roll], [pitch], [yaw], [roll], [pitch], [yaw], [w_x], [w_y], [w_z], [a_x], [a_y], [a_z]])
 	
 	return observation_function_h
-

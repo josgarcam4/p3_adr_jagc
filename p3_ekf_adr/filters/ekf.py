@@ -1,4 +1,3 @@
-
 import numpy as np
 
 import time
@@ -33,15 +32,19 @@ class ExtendedKalmanFilter:
 		
 	def predict(self, u, dt):
 		start_time = time.time()
-        # === TODO: Implement the EKF prediction step ===
+		# === TODO: Implement the EKF prediction step ===
 
-        # 1. Predict the new mean using motion model g
+		# 1. Predict the new mean using motion model g
+		self.mu = self.g(self.mu, u, dt)
 
-        # 2. Compute the Jacobian of the motion model G_t
+		# 2. Compute the Jacobian of the motion model G_t
+		G_t = self.G(self.mu, u, dt)
 
-        # 3. Update the covariance
+		# 3. Update the covariance
 
-        # ===============================================
+		self.Sigma = G_t @ self.Sigma @ G_t.T + self.R
+
+		# ===============================================
 
 		end_time = time.time()
 		execution_time = end_time - start_time
@@ -54,25 +57,31 @@ class ExtendedKalmanFilter:
 		return self.mu, self.Sigma
 
 	def update(self, z, dt):
-        start_time = time.time()
+		start_time = time.time()
 
-        # === TODO: Implement the EKF correction step ===
+		# === TODO: Implement the EKF correction step ===
 
-        # 1. Compute the Jacobian of the observation model H_t
+		# 1. Compute the Jacobian of the observation model H_t
+		H_t = self.H(self.mu)
 
-        # 2. Innovation covariance
-    
-        # 3. Kalman gain
+		# 2. Innovation covariance
+		S = H_t @ self.Sigma @ H_t.T + self.Q
 
-        # 4. Innovation (difference between actual and expected measurement)
+		# 3. Kalman gain
+		K = self.Sigma @ H_t.T @ np.linalg.inv(S)
 
-        # 5. Update the state estimate
+		# 4. Innovation (difference between actual and expected measurement)
+		y = z - self.h(self.mu)
 
-        # 6. Update the covariance
-        I = np.eye(len(self.mu))
+		# 5. Update the state estimate
+		#self.mu = self.mu + K @ y.reshape(self.mu.shape[0],)
+		self.mu = self.mu + K @ y.reshape(-1)
 
-        # ================================================
+		# 6. Update the covariance
+		I = np.eye(len(K))
+		self.Sigma = (I - K @ H_t) @ self.Sigma
+		# ================================================
 
-        end_time = time.time()
-        self.exec_times_upd.append(end_time - start_time)
-        return self.mu, self.Sigma
+		end_time = time.time()
+		self.exec_times_upd.append(end_time - start_time)
+		return self.mu, self.Sigma

@@ -1,3 +1,4 @@
+
 from matplotlib.typing import JoinStyleType
 from rclpy.node import Node
 
@@ -199,4 +200,3 @@ class KalmanFilterFusionNode(KalmanFilterNode):
 
     def set_observation(self):
         self.z = np.array([[self.normalized_pose[0]], [self.normalized_pose[1]], [self.normalized_pose[2]], [self.normalized_imu_theta], [self.imu_w], [self.imu_a_x], [self.imu_a_y]])
-
