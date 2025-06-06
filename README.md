@@ -27,48 +27,60 @@ La odometría con ruido se ha usado como observación, y la odometría sin ruido
 
 Incluye únicamente la posición y la orientación del robot. Representa la cinemática diferencial básica del TurtleBot3.
 Los 3 casos estudiados con ruidos son:
-proc_noise_std = [0.002, 0.002, 0.001] 
-obs_noise_std = [1.02, 1.02, 100.01]
-
-proc_noise_std = [0.002, 0.002, 0.001] 
-obs_noise_std = [10.0, 10.0, 1000.0]
-
-proc_noise_std = [0.1, 0.1, 0.05] 
-obs_noise_std = [1.02, 1.02, 100.01]
-
+- Ruido Inicial Estándar
+`proc_noise_std = [0.002, 0.002, 0.001]` 
+`obs_noise_std = [1.02, 1.02, 100.01]`
 ![Modelo 3D](images/3.png)
+
+- Alta incertidumbre en la observación
+`proc_noise_std = [0.002, 0.002, 0.001] `
+`obs_noise_std = [10.0, 10.0, 1000.0]`
+![Modelo 3D](images/3Q.png)
+
+- Alta incertidumbre en el modelo de movimiento
+`proc_noise_std = [0.1, 0.1, 0.05]`
+`obs_noise_std = [1.02, 1.02, 100.01]`
+![Modelo 3D](images/3R.png)
 
 ### Modelo 7D
 
 Extiende el modelo anterior añadiendo velocidad y aceleración lineal y velocidad angular, lo que permite fusionar odometría con IMU.
 
 Los ruidos añadidos son:
-proc_noise_std = [0.1, 0.1, 0.05, 0.1, 0.1, 0.1, 0.1]
-obs_noise_std = [100.0, 100.0, 1000.0, 6.853891945200942e-06, 1.0966227112321507e-06, 0.0015387262937311438, 0.0015387262937311438]
-
-proc_noise_std = [0.1, 0.1, 0.05, 0.1, 0.1, 0.1, 0.1]
-obs_noise_std = [1000.0, 1000.0, 10000.0, 6.853891945200942e-05, 1.0966227112321507e-05, 0.015387262937311438, 0.015387262937311438]
-
-proc_noise_std = [1, 1, 0.5, 1, 1, 1, 1]
-obs_noise_std = [100.0, 100.0, 1000.0, 6.853891945200942e-06, 1.0966227112321507e-06, 0.0015387262937311438, 0.0015387262937311438]
-
-
+- Ruido Inicial Estándar
+`proc_noise_std = [0.1, 0.1, 0.05, 0.1, 0.1, 0.1, 0.1]`
+`obs_noise_std = [100.0, 100.0, 1000.0, 6.853891945200942e-06, 1.0966227112321507e-06, 0.0015387262937311438, 0.0015387262937311438]`
 ![Modelo 7D](images/7.png)
+
+- Alta incertidumbre en la observación
+`proc_noise_std = [0.1, 0.1, 0.05, 0.1, 0.1, 0.1, 0.1]`
+`obs_noise_std = [1000.0, 1000.0, 10000.0, 6.853891945200942e-05, 1.0966227112321507e-05, 0.015387262937311438, 0.015387262937311438]`
+![Modelo 7D](images/7Q.png)
+
+- Alta incertidumbre en el modelo de movimiento
+`proc_noise_std = [1, 1, 0.5, 1, 1, 1, 1]`
+`obs_noise_std = [100.0, 100.0, 1000.0, 6.853891945200942e-06, 1.0966227112321507e-06, 0.0015387262937311438, 0.0015387262937311438]`
+![Modelo 7D](images/7R.png)
 
 ### Modelo 8D
 
 Incluye la descomposición cartesiana de la velocidad y proporciona una estimación más detallada y precisa, útil para trayectorias curvas.
-proc_noise_std = [0.1, 0.1, 0.05, 0.1, 0.1, 0.1, 0.1, 0.1]
-obs_noise_std = [100.0, 100.0, 1000.0, 6.853891945200942e-06, 1.0966227112321507e-06, 0.0015387262937311438, 0.0015387262937311438]
 
-proc_noise_std = [0.1, 0.1, 0.05, 0.1, 0.1, 0.1, 0.1, 0.1]
-obs_noise_std = [1000.0, 1000.0, 10000.0, 6.853891945200942e-05, 1.0966227112321507e-05, 0.015387262937311438, 0.015387262937311438]
-
-proc_noise_std = [1, 1, 0.5, 1, 1, 1, 1, 1]
-obs_noise_std = [100.0, 100.0, 1000.0, 6.853891945200942e-06, 1.0966227112321507e-06, 0.0015387262937311438, 0.0015387262937311438]
-
-
+Los ruidos añadidos son:
+- Ruido Inicial Estándar
+`proc_noise_std = [0.1, 0.1, 0.05, 0.1, 0.1, 0.1, 0.1, 0.1]`
+`obs_noise_std = [100.0, 100.0, 1000.0, 6.853891945200942e-06, 1.0966227112321507e-06, 0.0015387262937311438, 0.0015387262937311438]`
 ![Modelo 8D](images/8.png)
+
+- Alta incertidumbre en la observación
+`proc_noise_std = [0.1, 0.1, 0.05, 0.1, 0.1, 0.1, 0.1, 0.1]`
+`obs_noise_std = [1000.0, 1000.0, 10000.0, 6.853891945200942e-05, 1.0966227112321507e-05, 0.015387262937311438, 0.015387262937311438]`
+![Modelo 8D](images/8Q.png)
+
+- Alta incertidumbre en el modelo de movimiento
+`proc_noise_std = [1, 1, 0.5, 1, 1, 1, 1, 1]`
+`obs_noise_std = [100.0, 100.0, 1000.0, 6.853891945200942e-06, 1.0966227112321507e-06, 0.0015387262937311438, 0.0015387262937311438]`
+![Modelo 8D](images/8R.png)
 
 ---
 
