@@ -106,6 +106,17 @@ Se han probado tres configuraciones distintas de ruido para observar el comporta
 
 ---
 
+## Conclusiones
+
+
+Al analizar las gráficas del ekf del modelo 3D, se observa que en el caso balanceado la estimación obtenida es bastante deficiente. Esto podría deberse a que el filtro de estimación no logra ajustarse adecuadamente al ground truth. Cuando se introduce un alto nivel de ruido en las observaciones, el resultado es similar al caso balanceado: la estimación sigue siendo pobre. Esto se explica porque, al incrementarse la incertidumbre de los sensores, la actualización del filtro apenas aporta corrección alguna. Por otro lado, en el escenario con alto ruido en el modelo, la estimación mejora notablemente y se ajusta mucho mejor al ground truth. Esta mejora puede atribuirse a que, al aumentar el ruido en el modelo de movimiento, la actualización de la estimación cobra mayor peso frente a la predicción, lo que permite un mejor ajuste a las observaciones reales.
+
+Respecto al modelo 7D, al observar nuevamente las gráficas, se aprecia que, en el caso balanceado, la estimación se aproxima al ground truth, lo que indica que el filtro no presenta un comportamiento deficiente. Sin embargo, cuando existe un alto nivel de ruido en las observaciones, la estimación empeora respecto al caso balanceado, debido a la elevada incertidumbre en las mediciones de los sensores. Por último, en el escenario con alto ruido en el modelo, la estimación mejora significativamente en comparación con los casos anteriores, lo que permite concluir que el filtro funciona correctamente bajo estas condiciones.
+
+Finalmente, en cuanto al modelo 8D, al analizar las gráficas, se observa que tanto en el caso balanceado como en el de alto ruido en la observación, las estimaciones son muy deficientes, coincidiendo con las conclusiones alcanzadas en los modelos anteriores. En cambio, en el escenario de alto ruido en el modelo, la estimación mejora de forma considerable, lo que permite concluir que se ha obtenido un resultado fiable.
+
+---
+
 ## Tareas realizadas
 
 Durante el desarrollo de la práctica se han completado las etiquetas `# TODO` en los siguientes módulos:
